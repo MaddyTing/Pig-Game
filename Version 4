@@ -1,0 +1,31 @@
+#Game of Pig
+
+import random
+
+playersum = 0
+compsum = 0
+
+player = input("Type GO to roll the die.")
+
+while(player == "GO"):
+    while(playersum < 100 or compsum < 100):
+        die = random.randint(1, 6)
+        if(die != 1):
+            die = random.randint(1, 6)
+            playersum = playersum + die
+            print(die)
+            if(die == 1):
+                print("You rolled a 1 - It's the computer's turn now!")
+                die = random.randint(1, 6)
+                compsum = compsum + die
+                comphold = random.randint(1, 2)
+                while(comphold != 2):
+                    die = random.randint(1, 6)
+                    compsum = compsum + die
+                    comphold = random.randint(1, 2)
+                    if(comphold == 2):
+                        print("The computer has decided to hold. It's your turn!")
+                        die = random.randint(1, 6)
+                        playersum = playersum + die
+                        print(die)
+                

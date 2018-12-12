@@ -1,0 +1,47 @@
+#Game of Pig
+
+import random
+
+playersum = 0
+compsum = 0
+
+player = input("Type GO to roll the die. Type NO to stop.")
+
+if(player == "GO"):
+    if(playersum >= 100):
+        print("You have won! Congrats!")
+    elif(compsum >= 100):
+        print("The computer has won! You have lost.")
+    elif(playersum < 100 and compsum < 100):
+        while(playersum < 100 and compsum < 100):
+            if(playersum >= 100 or compsum >= 100):
+                print("STOP")
+            die = random.randint(1, 6)
+            if(die != 1):
+                die = random.randint(1, 6)
+                playersum = playersum + die
+                print(die)
+                print("Your total at this time is: " + str(playersum))
+            if(die == 1):
+                print("You rolled a 1 - It's the computer's turn now!")
+                die = random.randint(1, 6)
+                compsum = compsum + die
+                comphold = random.randint(1, 2)
+                print("The computer's total at this time is: " + str(compsum))
+                if(comphold == 2):
+                    print("The computer has decided to hold. It's your turn!")
+                    die = random.randint(1, 6)
+                    playersum = playersum + die
+                    print(die)
+                    print("Your total at this time is: " + str(playersum))
+                    player = input("Type GO to roll the die. Type NO to stop.")
+                if(comphold == 1):
+                    print("It's still the computer's turn!")
+                    die = random.randint(1, 6)
+                    compsum = compsum + die
+                    print("The computer's total at this time is: " + str(compsum))
+                    comphold = random.randint(1, 2) 
+else:
+    print("You did not roll the dice :P")
+
+                
